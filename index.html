@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="description"
+      content="Daily Express Blog - Your source for the latest news, insights, and stories."
+    />
+    <meta
+      name="keywords"
+      content="Daily Express, blog, news, articles, stories"
+    />
+    <meta name="author" content="Daily Express Team" />
+    <title>Daily Express | Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <header class="bg-gray-800 text-white py-4 text-center">
+      <a href="/index.html" class="inline-block">
+        <h1 class="text-4xl font-bold">Daily Express</h1>
+      </a>
+    </header>
+    <nav class="bg-gray-700 py-4">
+      <ul class="flex justify-center gap-8">
+        <li>
+          <a href="#home" class="text-white font-bold hover:text-blue-400"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a href="#news" class="text-white font-bold hover:text-blue-400"
+            >News</a
+          >
+        </li>
+        <li>
+          <a href="#lifestyle" class="text-white font-bold hover:text-blue-400"
+            >Lifestyle</a
+          >
+        </li>
+        <li>
+          <a href="#tech" class="text-white font-bold hover:text-blue-400"
+            >Tech</a
+          >
+        </li>
+        <li>
+          <a href="#contact" class="text-white font-bold hover:text-blue-400"
+            >Contact</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <div class="container mx-auto px-4 py-8">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        id="blogGrid"
+      ></div>
+    </div>
+    <footer class="bg-gray-800 text-white text-center py-4 mt-8">
+      <p>&copy; 2025 Daily Express. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Sample blog post data (can be replaced with API call)
+      const blogPosts = [
+        {
+          id: 1,
+          title:
+            "Bold & Unapologetic: Gay Men’s Underwear, Pride Apparel & Queer Swimwear at DealByEthan.gay",
+          excerpt:
+            "DealByEthan.gay is a bold, inclusive fashion destination celebrating queer identity through expressive style. Specializing in gay men’s underwear, swimwear, and sexy apparel, the most provocative Deal By Ethan site curates vibrant, body-positive pieces that empower confidence and individuality. With a focus on LGBTQ+ fashion for men and Pride-ready designs, DealByEthan's .gay online shop is more than a store—it’s a statement of self-love and visibility.",
+          date: "August 31, 2025",
+          image: "https://dealbyethan.gay/cdn/shop/collections/ErgoWear_EW1743_Red_1_ff06ad3a-17f7-4ec4-be42-b267399118f0.jpg?v=1754238236&width=1500",
+          url: "/pride-clothing-for-men.html",
+        },
+      ];
+
+      // Function to render blog posts
+      function renderBlogPosts(posts) {
+        const blogGrid = document.getElementById("blogGrid");
+        blogGrid.innerHTML = "";
+
+        posts.forEach((post) => {
+          const card = document.createElement("div");
+          card.className =
+            "bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-transform hover:-translate-y-1";
+          card.innerHTML = `
+                    <img src="${post.image}" alt="${post.title}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h2 class="text-xl font-semibold mb-2">${post.title}</h2>
+                        <p class="text-gray-600 mb-4">${post.excerpt}</p>
+                        <div class="text-gray-500 text-sm mb-4">Published on ${post.date}</div>
+                        <a href="${post.url}" class="text-blue-500 font-bold hover:underline">Read More</a>
+                    </div>
+                `;
+          blogGrid.appendChild(card);
+        });
+      }
+
+      // Function to add new blog post
+      function addBlogPost(title, excerpt, image, date) {
+        const newPost = {
+          id: blogPosts.length + 1,
+          title,
+          excerpt,
+          image,
+          date,
+        };
+        blogPosts.push(newPost);
+        renderBlogPosts(blogPosts);
+      }
+
+      // Initialize page
+      document.addEventListener("DOMContentLoaded", () => {
+        renderBlogPosts(blogPosts);
+      });
+    </script>
+  </body>
+</html>
